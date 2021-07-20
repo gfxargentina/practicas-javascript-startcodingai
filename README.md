@@ -1,0 +1,1 @@
+Practicas para el curso de Backend de StartCoding AI - https://startcoding.ai/
