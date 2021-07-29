@@ -82,30 +82,57 @@ El usuario deberia ingresar la temperatura y a que unidad la quiere convertir.
 C a F - (c x 9) /5 + 32
 Fa C - (F - 32) x 5/9
 */
-const convertTemperature = (temperature, target) => {
-	const parsedTemp = +temperature;
-	const parsedTarget = target.toLowerCase();
+// const convertTemperature = (temperature, target) => {
+// 	const parsedTemp = +temperature;
+// 	const parsedTarget = target.toLowerCase();
 
-	if (!parsedTemp && parsedTemp !== 0) {
-		alert('El valor ingresado no es valido');
-		return;
-	}
+// 	if (!parsedTemp && parsedTemp !== 0) {
+// 		alert('El valor ingresado no es valido');
+// 		return;
+// 	}
 
-	if (parsedTarget === 'celsius') {
-		return (parsedTemp - 32) * 5 / 9;
-	} else if (parsedTarget === 'faranheit') {
-		return parsedTemp * 9 / 5 + 32;
-	} else {
-		alert('El formato ingresado no es valido');
-		return;
-	}
+// 	if (parsedTarget === 'celsius') {
+// 		return (parsedTemp - 32) * 5 / 9;
+// 	} else if (parsedTarget === 'faranheit') {
+// 		return parsedTemp * 9 / 5 + 32;
+// 	} else {
+// 		alert('El formato ingresado no es valido');
+// 		return;
+// 	}
+// };
+
+// const temperature = prompt('Ingrese la temperatura');
+// const target = prompt('Ingresa la unidad de medida que quiere convertir - celsius o faranheit');
+
+// const response = convertTemperature(temperature, target);
+
+// if (response !== undefined) {
+// 	alert(`La temperatura en ${target.toLowerCase()} es ${response}`);
+// }
+
+/*
+4)Crear un programa para calcular el total de una compra. Para ello se le
+tiene que pedir al usuario que ingrese el precio de cada producto y cuando termine
+que ingrese la palabra 'total'. Devolverle el total de la compra
+*/
+const calcularTotal = () => {
+	let total = 0;
+	let subTotal;
+
+	do {
+		subTotal = prompt('Ingrese el valor del producto, para finalizar el calculo escriba total');
+		const parsedSubtotal = +subTotal;
+
+		if (parsedSubtotal) {
+			total += parsedSubtotal;
+		} else if (subTotal.toLowerCase() !== 'total') {
+			alert('El valor ingresado no es un numero');
+		}
+		//iterar mientras sea distinto a total
+	} while (subTotal.toLowerCase() !== 'total');
+
+	return total;
 };
 
-const temperature = prompt('Ingrese la temperatura');
-const target = prompt('Ingresa la unidad de medida que quiere convertir - celsius o faranheit');
-
-const response = convertTemperature(temperature, target);
-
-if (response !== undefined) {
-	alert(`La temperatura en ${target.toLowerCase()} es ${response}`);
-}
+const response = calcularTotal();
+alert(response);
