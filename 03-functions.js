@@ -115,24 +115,44 @@ Fa C - (F - 32) x 5/9
 tiene que pedir al usuario que ingrese el precio de cada producto y cuando termine
 que ingrese la palabra 'total'. Devolverle el total de la compra
 */
-const calcularTotal = () => {
-	let total = 0;
-	let subTotal;
+// const calcularTotal = () => {
+// 	let total = 0;
+// 	let subTotal;
 
-	do {
-		subTotal = prompt('Ingrese el valor del producto, para finalizar el calculo escriba total');
-		const parsedSubtotal = +subTotal;
+// 	do {
+// 		subTotal = prompt('Ingrese el valor del producto, para finalizar el calculo escriba total');
+// 		const parsedSubtotal = +subTotal;
 
-		if (parsedSubtotal) {
-			total += parsedSubtotal;
-		} else if (subTotal.toLowerCase() !== 'total') {
-			alert('El valor ingresado no es un numero');
-		}
-		//iterar mientras sea distinto a total
-	} while (subTotal.toLowerCase() !== 'total');
+// 		if (parsedSubtotal) {
+// 			total += parsedSubtotal;
+// 		} else if (subTotal.toLowerCase() !== 'total') {
+// 			alert('El valor ingresado no es un numero');
+// 		}
+// 		//iterar mientras sea distinto a total
+// 	} while (subTotal.toLowerCase() !== 'total');
 
-	return total;
+// 	return total;
+// };
+
+// const response = calcularTotal();
+// alert(response);
+
+// 5)- crear una función que tome como parámetro el año actual y el año de nacimiento
+// y calcule la edad del usuario (más o menos).
+// Preguntarle estos datos al usuario y guardarlos en 2 variables
+// Ejecutar la función con estos datos
+// Impriman el resultado en la consola
+
+const ageCalculator = (currentAge, birthYear) => {
+	let current = +currentAge;
+	let birth = +birthYear;
+
+	const yourAge = current - birth;
+	return yourAge;
 };
 
-const response = calcularTotal();
-alert(response);
+const anioActual = prompt('Cual es el año actual?');
+const anioNacimiento = prompt('Cual es tu año de nacimiento');
+
+const tuEdad = ageCalculator(anioActual, anioNacimiento);
+alert(`Tu edad Actual es ${tuEdad} años`);
