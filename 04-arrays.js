@@ -40,6 +40,16 @@ const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', '
 
 //recortar un array, solo deja los index especificados, el ultimo index(3) tambien lo saca, extraigo un pedazo del array
 //el array original no se modifica
-const newArray = array.slice(1, 3);
-console.log(array);
-console.log(newArray);
+// const newArray = array.slice(1, 3);
+// console.log(array);
+// console.log(newArray);
+
+//iterar sobre un array con FOR
+// for (let i = 0; i < array.length; i++) {
+// 	console.log(array[i]);
+// }
+
+//iterar sobre un array con forEach
+array.forEach((item) => {
+	console.log(item);
+});
