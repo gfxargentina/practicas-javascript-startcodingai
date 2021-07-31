@@ -53,3 +53,6 @@ const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', '
 array.forEach((item) => {
 	console.log(item);
 });
+
+
+
