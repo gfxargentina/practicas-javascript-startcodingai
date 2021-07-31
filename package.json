@@ -1,0 +1,22 @@
+{
+  "name": "startcodingai",
+  "version": "1.0.0",
+  "description": "practicas del curso Javascript de Start Coding AI",
+  "main": "01-basics.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfxargentina/practicas-javascript-startcodingai.git"
+  },
+  "author": "Luis Chilo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfxargentina/practicas-javascript-startcodingai/issues"
+  },
+  "homepage": "https://github.com/gfxargentina/practicas-javascript-startcodingai#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
