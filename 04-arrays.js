@@ -1,4 +1,4 @@
-const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', 'Los Redondos', 'patricio rey', 'cecilia' ];
+const array = [ 'Ale', 'pedro', 'juan', 'Cecilia', 'Beatriz', 'Charly Garcia', 'Los Redondos', 'patricio rey', 'cecilia' ];
 
 //buscar el ultimo elemento de un array
 // const lastElement = array[array.length - 1];
@@ -79,18 +79,46 @@ const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', '
 // console.log(filteredArray);
 
 //FIND - te devuelve el primer valor de la condicion, no importa que haya muchos valores iguales
-const existingElement = array.find((name) => {
-	return name === 'nicolas';
-});
+// const existingElement = array.find((name) => {
+// 	return name === 'nicolas';
+// });
 
-console.log(existingElement);
-if (existingElement) {
-	console.log("El nombre esta en la lista");
-} else {
-	console.log("el nombre no esta en la lista");
-}
+// console.log(existingElement);
+// if (existingElement) {
+// 	console.log("El nombre esta en la lista");
+// } else {
+// 	console.log("el nombre no esta en la lista");
+// }
 
-//
+//SORT - para ordenar un array, tambien puede recibir una funcion
+// const numbers = [125, 25,45,90,78,31,27]
+// const orderedArray = numbers.sort((a, b) => {
+// 	return a - b
+// });
+// console.log(orderedArray);
+
+//REDUCE
+//sin reduce
+const numbers = [10, 20, 30, 40];
+//suma de numbers
+// let total = 0;
+// numbers.forEach((number) => (total += number));
+// console.log(total);
+
+//con reduce, el 0 es el valor inicial
+// const total = numbers.reduce((acumulador, valorActual) => {
+// 	console.log("Acumulador:", acumulador);
+// 	console.log("Valor actual:", valorActual);
+// 	console.log("Aca termina la iteracion");
+// 	return acumulador + valorActual;
+// }, 0)
+//suma del array numbers
+const total = numbers.reduce((acumulador, valorActual) => {
+	return acumulador + valorActual;
+}, 0)
+
+console.log(total);
+
 
 
 
