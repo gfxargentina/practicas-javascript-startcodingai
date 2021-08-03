@@ -1,4 +1,4 @@
-const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', 'Los Redondos' ];
+const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', 'Los Redondos', 'patricio rey', 'cecilia' ];
 
 //buscar el ultimo elemento de un array
 // const lastElement = array[array.length - 1];
@@ -49,10 +49,49 @@ const array = [ 'ale', 'pedro', 'juan', 'cecilia', 'Beatriz', 'Charly Garcia', '
 // 	console.log(array[i]);
 // }
 
-//iterar sobre un array con forEach
-array.forEach((item) => {
-	console.log(item);
+//iterar sobre un array con forEach, el forEach no devuelve nada, no se lo puede guardar en una variable
+// array.forEach((item) => {
+// 	console.log(item);
+// });
+
+//sin map
+// const newArray = [];
+
+// array.forEach((name) => {
+// 	const newString = `Nombre: ${name}`
+// 	newArray.push(newString);
+// })
+
+// console.log(newArray);
+
+//con map, devuelve un nuevo array, por cada elemento(name) va a retornar lo que esta en el return de la funcion
+// const newArrayWithMap = array.map((name) => {
+// 	return `Nombre: ${name}`
+// })
+
+// console.log(newArrayWithMap);
+
+//FILTER - filtrar, devuelve un resultado segun la condicion si es true o false y devuelve todos los valores
+// const filteredArray = array.filter((name) => {
+// 	return name === 'cecilia'
+// })
+
+// console.log(filteredArray);
+
+//FIND - te devuelve el primer valor de la condicion, no importa que haya muchos valores iguales
+const existingElement = array.find((name) => {
+	return name === 'nicolas';
 });
+
+console.log(existingElement);
+if (existingElement) {
+	console.log("El nombre esta en la lista");
+} else {
+	console.log("el nombre no esta en la lista");
+}
+
+//
+
 
 
 
