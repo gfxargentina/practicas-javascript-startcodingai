@@ -99,7 +99,7 @@ const array = [ 'Ale', 'pedro', 'juan', 'Cecilia', 'Beatriz', 'Charly Garcia', '
 
 //REDUCE
 //sin reduce
-const numbers = [10, 20, 30, 40];
+//const numbers = [10, 20, 30, 40];
 //suma de numbers
 // let total = 0;
 // numbers.forEach((number) => (total += number));
@@ -113,11 +113,85 @@ const numbers = [10, 20, 30, 40];
 // 	return acumulador + valorActual;
 // }, 0)
 //suma del array numbers
-const total = numbers.reduce((acumulador, valorActual) => {
-	return acumulador + valorActual;
-}, 0)
+// const total = numbers.reduce((acumulador, valorActual) => {
+// 	return acumulador + valorActual;
+// }, 0)
 
-console.log(total);
+// console.log(total);
+
+/* 
+Dada la siguiente lista de invitados en ese orden:
+
+Lucas,
+Matias,
+Jose,
+Pedro,
+Martina,
+Marcelo,
+Esteban,
+Marcela,
+Martin
+
+1- informar por consola el numero de invitados
+*/
+const invitados = ["Lucas", "Matias","Jose", "Pedro", "Martina", "Marcelo","Esteban", "Marcela", "Martin"];
+//console.log(`La cantidad de invitados es de ${invitados.length} personas`);
+
+/*
+2- imprimir por consola el nombre del ultimo invitado
+*/
+//console.log(`El ultimo invitado de la fiesta es ${invitados[invitados.length - 1]}`);
+
+/*
+3- a ultimo momento se invito a Pedro a la fiesta, por lo que hay que agregarlo al final de la lista.
+*/
+invitados.push("Pedro");
+// console.log(invitados);
+
+/*
+4- media hora antes de empezar Marcela confirmo que no podia asistir. Generar una nueva lista que 
+contenga los invitados que confirmaron su presencia.
+*/
+const nuevaListaInvitados = invitados.filter((firstName) => firstName !== "Marcela");
+//console.log(nuevaListaInvitados);
+
+/*
+5-Por cada invitado, asignarle un numero de orden conforme su posicion en la lista. Mostrar este numero de
+orden en un nuevo array de la siguiente manera: "Juan. Orden: 1"
+*/
+// const listaOrdenada = nuevaListaInvitados.map((firstName, index) => {
+// 	return ` ${firstName}. orden: ${index}`
+// });
+// console.log(listaOrdenada);
+
+/*
+6-Suponiedo que los invitados consumieron la siguiente cantidad de platos
+
+Lucas: 3 platos
+Esteban: 1 platos
+Jose: 1 plato
+Los  restantes: 4 platos
+
+calcular el numero total de platos consumidos al final de la fiesta
+*/
+const platosTotales = nuevaListaInvitados.reduce((acumulador, valorActual) => {
+	//reduce itera por c/u de los nombres del array y si encuentra a lucas le suma 3 al acumulador que esta en 0, linea 186
+	//y asi el acumulador se va modificando segun la condicion que pongamos
+	if (valorActual === "Lucas") {
+		return acumulador + 3
+		//a esteban y jose le suma 1
+	} else if (valorActual === "Esteban" || valorActual === "Jose" ) {
+		return acumulador + 1 
+		//en todos los demas nombres le suma 4
+	} else {
+		return acumulador + 4
+	}
+}, 0)
+console.log(`El numero total de platos consumidos es de ${platosTotales}`);
+
+//6- acomodar los invitados por orden alfabetico
+const invitadosOrdenados = nuevaListaInvitados.sort();
+console.log(invitadosOrdenados);
 
 
 
