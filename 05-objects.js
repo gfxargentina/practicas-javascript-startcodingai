@@ -64,11 +64,11 @@
 // dog.speak();
 
 //MANIPULACION DE OBJETOS
-const person = {
-    firstName: "Luis",
-    city: "tucuman",
-    job: "Developer",
-};
+// const person = {
+//     firstName: "Luis",
+//     city: "tucuman",
+//     job: "Developer",
+// };
 
 //acceder a un elemento
 //console.log(person.city);
@@ -104,5 +104,65 @@ const person = {
 // console.log(person);
 
 //Object.entries() - devuelve una matriz(arrays dentro de otro arrays) con una estructura de key values por cada elemento del objeto
-const entries = Object.entries(person);
-console.log(entries);
+// const entries = Object.entries(person);
+// console.log(entries);
+
+//OBJECT EJERCICIOS
+/* 
+1) Crear una clase Deportes, que reciba el atributo nombre y un metodo que permita mostrar por consola ese nombre.
+Ademas, crear un metodo que permita mostrar si el deporte es individual o por equipos
+
+Crear una subclase que sea DeportesDeEquipo que permita ademas del nombre, el numero de integrantes
+que deben formar parte de ese equipo.
+Crear un metodo para mostrar el siguiente mensaje:
+"Para jugar al futbol necesitas 11 jugadores por equipo"
+tener en cuenta que 'futbol' y 11 son valores que pueden variar dependiendo del deporte ej.: si fuese basket serian 5 jugadores
+*/
+
+class Deporte {
+    constructor(nombre, deporteEnEquipo){
+        this.nombre = nombre;
+        this.deporteEnEquipo = deporteEnEquipo;
+    }
+    
+    nombreDeporte(){
+        console.log(`El nombre del deporte es ${this.nombre}`);
+    }
+
+    esDeporteDeEquipo(){
+        const mensaje = this.deporteEnEquipo ? `${this.nombre} es un deporte de equipo` : `${this.nombre} no es un deporte de equipo`;
+        console.log(mensaje);
+    }   
+}
+
+class DeporteDeEquipo extends Deporte {
+       constructor(nombre, jugadoresPorEquipo){
+           //traigo el nombre de la clase deporte
+           super(nombre);
+           this.jugadoresPorEquipo = jugadoresPorEquipo;
+       }
+       cuantosJugadoresPorEquipo() {
+           console.log(`Para jugar al ${this.nombre} necesitas ${this.jugadoresPorEquipo} jugadores por equipo`);
+       }
+}
+
+
+const tenis = new Deporte("tenis", false);
+tenis.nombreDeporte();
+tenis.esDeporteDeEquipo();
+
+const futbol = new DeporteDeEquipo("Futbol", 11);
+futbol.nombreDeporte();
+futbol.cuantosJugadoresPorEquipo();
+
+const basket = new DeporteDeEquipo("Basket", 5)
+basket.nombreDeporte();
+basket.cuantosJugadoresPorEquipo();
+
+// futbol.sayName();
+// futbol.esDeporteDeEquipo();
+// tenis.sayName();
+// tenis.esDeporteDeEquipo();
+
+
+
