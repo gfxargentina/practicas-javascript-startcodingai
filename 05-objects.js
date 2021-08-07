@@ -119,50 +119,122 @@ Crear un metodo para mostrar el siguiente mensaje:
 tener en cuenta que 'futbol' y 11 son valores que pueden variar dependiendo del deporte ej.: si fuese basket serian 5 jugadores
 */
 
-class Deporte {
-    constructor(nombre, deporteEnEquipo){
-        this.nombre = nombre;
-        this.deporteEnEquipo = deporteEnEquipo;
-    }
+// class Deporte {
+//     constructor(nombre, deporteEnEquipo){
+//         this.nombre = nombre;
+//         this.deporteEnEquipo = deporteEnEquipo;
+//     }
     
-    nombreDeporte(){
-        console.log(`El nombre del deporte es ${this.nombre}`);
-    }
+//     nombreDeporte(){
+//         console.log(`El nombre del deporte es ${this.nombre}`);
+//     }
 
-    esDeporteDeEquipo(){
-        const mensaje = this.deporteEnEquipo ? `${this.nombre} es un deporte de equipo` : `${this.nombre} no es un deporte de equipo`;
-        console.log(mensaje);
-    }   
-}
+//     esDeporteDeEquipo(){
+//         const mensaje = this.deporteEnEquipo ? `${this.nombre} es un deporte de equipo` : `${this.nombre} no es un deporte de equipo`;
+//         console.log(mensaje);
+//     }   
+// }
 
-class DeporteDeEquipo extends Deporte {
-       constructor(nombre, jugadoresPorEquipo){
-           //traigo el nombre de la clase deporte
-           super(nombre);
-           this.jugadoresPorEquipo = jugadoresPorEquipo;
-       }
-       cuantosJugadoresPorEquipo() {
-           console.log(`Para jugar al ${this.nombre} necesitas ${this.jugadoresPorEquipo} jugadores por equipo`);
-       }
-}
+// class DeporteDeEquipo extends Deporte {
+//        constructor(nombre, jugadoresPorEquipo){
+//            //traigo el nombre de la clase deporte
+//            super(nombre);
+//            this.jugadoresPorEquipo = jugadoresPorEquipo;
+//        }
+//        cuantosJugadoresPorEquipo() {
+//            console.log(`Para jugar al ${this.nombre} necesitas ${this.jugadoresPorEquipo} jugadores por equipo`);
+//        }
+// }
 
 
-const tenis = new Deporte("tenis", false);
-tenis.nombreDeporte();
-tenis.esDeporteDeEquipo();
+// const tenis = new Deporte("tenis", false);
+// tenis.nombreDeporte();
+// tenis.esDeporteDeEquipo();
 
-const futbol = new DeporteDeEquipo("Futbol", 11);
-futbol.nombreDeporte();
-futbol.cuantosJugadoresPorEquipo();
+// const futbol = new DeporteDeEquipo("Futbol", 11);
+// futbol.nombreDeporte();
+// futbol.cuantosJugadoresPorEquipo();
 
-const basket = new DeporteDeEquipo("Basket", 5)
-basket.nombreDeporte();
-basket.cuantosJugadoresPorEquipo();
+// const basket = new DeporteDeEquipo("Basket", 5)
+// basket.nombreDeporte();
+// basket.cuantosJugadoresPorEquipo();
 
 // futbol.sayName();
 // futbol.esDeporteDeEquipo();
 // tenis.sayName();
 // tenis.esDeporteDeEquipo();
+
+/* 
+Andrea y martin deciden hacer un picnic al aire libre.
+Andrea propone llevar una bolsa con 2 cervezas, 2 sandwiches y 1 bolsa de papas fritas. Por su parte martin
+lleva 1 porcion de torta, una gaseosa y 1 paquete de galletitas dulces.
+
+CREAR UN OBJETO QUE REPRESENTE CADA UNA DE LAS BOLSAS, DONDE CADA PRODUCTO TENGA LA CANTIDAD QUE LLEVO CADA UNO.
+
+A)mostrar por consola los productos que llevo c/u(solo el nombre del producto)
+
+B)En el camino al picnic, la bolsa de Andrea se rompio, por lo que tuvieron que poner todo en la bolsa de martin.
+Realizar el cambio correspondiente para que la bolsa de Martin tenga el total de los productos del picnic.
+
+C)calcular el total de productos que llevaron al picnic
+
+*/
+
+const BolsaAndrea = {
+    cervezas: 2,
+    sandwiches: 2,
+    papasFritas: 1,
+}
+
+const BolsaMartin = {
+    torta: 1,
+    gaseosa: 1,
+    galletasDulces: 1,
+}
+
+console.log(BolsaAndrea, BolsaMartin);
+//A
+const productosMartin = Object.keys(BolsaMartin);
+const productosAndrea = Object.keys(BolsaAndrea);
+
+console.log(`Los productos de Martin son ${productosMartin}`);
+console.log(`Los productos de Andrea son ${productosAndrea}`);
+
+//B
+Object.assign(BolsaMartin, BolsaAndrea);
+console.log(BolsaMartin);
+
+//C
+
+//devuelve un array de los productos
+// const productos = Object.keys(BolsaMartin)
+// console.log(productos);
+
+// //solucion 1
+// let productosTotal = 0;
+// productos.forEach((producto) => (productosTotal += BolsaMartin[producto]));
+// console.log(`El total de productos que llevaron son ${productosTotal}`);
+
+//solucion 2
+// for (const key in BolsaMartin) {
+//     if (Object.hasOwnProperty.call(BolsaMartin, key)) {
+//         productosTotal += BolsaMartin[key];        
+//     }
+// }
+// console.log(productosTotal);
+
+//solucion 3
+//extrae los valores de los productos del objeto BolsaMartin
+const cantidadProductos = Object.values(BolsaMartin);
+console.log(`Los valores de los productos ${cantidadProductos}`);
+
+//el valor inicial es 0, reduce va iterando por cada valor de producto 
+//y lo guarda en el acumulador y lo va sumando en cada iteracion
+const totalDeProductos = cantidadProductos.reduce((acumulador, valorActual) => {
+    return acumulador + valorActual
+}, 0)
+
+console.log(`En total Andrea y Martin llevaron ${totalDeProductos} productos`);
 
 
 
