@@ -51,12 +51,26 @@ Mario
 Juan
 Martin
 */
-setTimeout(() => {
-    console.log("Juan");
-}, 10);
-console.log("Mario");
-setTimeout(() => {
-    console.log("Martin"); 
-}, 15);
+// setTimeout(() => {
+//     console.log("Juan");
+// }, 10);
+// console.log("Mario");
+// setTimeout(() => {
+//     console.log("Martin"); 
+// }, 15);
 
+/*
+2)-Utilizando setTimeout, crear una funcion que actue como un temporizador, haciendo una cuenta
+regresiva desde el numero de segundos a 0. Para ese ejercicio no se puede utilizar nigun tipo de loop(for, while etc)
+PISTA: para resolver el ejercicio pueden investigar un poco sobre funciones recursivas
+*/
+const temporizador = (segundos) => {
+    setTimeout(() => {
+        if(segundos < 0) return;
+        console.log(segundos);
+        temporizador(segundos - 1);
+    }, 1000);
+};
+
+temporizador(10);
 
