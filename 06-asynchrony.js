@@ -129,3 +129,20 @@ const getRepositoriesFromOwner = async () => {
 }
 
 getRepositoriesFromOwner();
+
+//JSON - Metodos
+const body = {
+    id: 1,
+    title: "foo",
+    body: "bar",
+    userId: 1,
+};
+
+//convertir a JSON
+const parsedBody = JSON.stringify(body);
+console.log(body);
+console.log(parsedBody);
+
+//convertir JSON a JS
+const bodyToJS = JSON.parse(parsedBody);
+console.log(bodyToJS);
