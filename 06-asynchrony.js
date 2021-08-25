@@ -64,13 +64,68 @@ Martin
 regresiva desde el numero de segundos a 0. Para ese ejercicio no se puede utilizar nigun tipo de loop(for, while etc)
 PISTA: para resolver el ejercicio pueden investigar un poco sobre funciones recursivas
 */
-const temporizador = (segundos) => {
-    setTimeout(() => {
-        if(segundos < 0) return;
-        console.log(segundos);
-        temporizador(segundos - 1);
-    }, 1000);
-};
+// const temporizador = (segundos) => {
+//     setTimeout(() => {
+//         if(segundos < 0) return;
+//         console.log(segundos);
+//         temporizador(segundos - 1);
+//     }, 1000);
+// };
 
-temporizador(10);
+// temporizador(10);
 
+/*
+
+
+3) Utilizando la API de github - https://api.github.com  , realizar las siguientes tareas
+
+a- Obtener un listado de los repositorios publicos
+*/
+const baseUrl = "https://api.github.com";
+
+const getPublicRepositories = async () => {
+    const response = await fetch(`${baseUrl}/repositories`);
+    const jsonResponse = await response.json();
+    //console.log(jsonResponse);
+    return jsonResponse;
+}
+
+//getPublicRepositories();
+
+/*
+b-generar una funcion que a partir de la respuesta del punto anterior, retorne un array de los 
+nombres de usuario de los owners de los repositorios listados
+*/
+// const getOwnersNames = async () => {
+//     const repositories = await getPublicRepositories();
+//     //console.log(repositories);
+//     //iteramos por cada repositorio con el mac y devolvemos el nombre de c/u
+//     const ownerNames = repositories.map((repo) => repo.owner.login);
+//     console.log(ownerNames);
+    
+// }
+
+// getOwnersNames();
+
+/*
+c- Tomar de la respuesta al primer repositorio y listar todos los repositorios del owner.
+PISTA: Para ver el endpoint al cual deberas pegarle para traer los repositorios del owner, deberas
+inspeccionar la informacion que recibas dentro del primer request
+*/
+const getRepositoriesFromOwner = async () => {
+    const repositories = await getPublicRepositories();
+    //accedo al primer elemento del array
+    const firstRepository = repositories[0];
+
+    //endpoint que traigo de firstRepository
+    const reposEndpoint = firstRepository.owner.repos_url;
+
+    //fetch al endpoint para traer los repositorios del owner seleccionado
+    const reposResponse = await fetch(reposEndpoint);
+    //parseo de la data para poder leerla
+    const jsonReposResponse = await reposResponse.json();
+
+    console.log(jsonReposResponse);
+}
+
+getRepositoriesFromOwner();
