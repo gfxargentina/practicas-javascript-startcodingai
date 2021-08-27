@@ -47,7 +47,51 @@ const avatar = document.querySelector("#avatar");
 avatar.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/1024px-The.Matrix.glmatrix.2.png";
 
 //Introducir html con js dentro del nodo que seleccionemos
-const list = document.querySelector("#repos-list");
-list.innerHTML= `<li>1 Repo</li> <li>2 Repo</li>`
-console.log(list.outerHTML);
-console.log(list.innerHTML);
+// const list = document.querySelector("#repos-list");
+// list.innerHTML= `<li>1 Repo</li> <li>2 Repo</li>`
+// console.log(list.outerHTML);
+// console.log(list.innerHTML);
+
+//Modificar los estilos
+//const container = document.querySelector(".container");
+//console.log(container.className);
+
+//className
+//container.className = "background-black";
+
+//classList
+// container.classList.add("background-black");
+// //console.log(container.classList);
+
+// //remover una clase
+// container.classList.remove("background-black");
+
+//Toggle - agrega una clase si el elemento no la tiene o quitarsela si la tiene
+//container.classList.toggle("background-black");
+
+
+const cambiarTema = () => {
+  //selecciona los textos
+  const textNodes = document.querySelectorAll(".text");
+  //selecciona el contenedor
+  const container = document.querySelector(".container");
+
+  // //agrega un borde a la imagen
+  // const avatar = document.querySelector("#avatar");
+  // //console.log(avatar.style);
+  // avatar.style.border = "2px solid blue";
+  // //console.log(avatar.style);
+
+  //cambiar el color del contenedor
+  container.classList.toggle("background-black");
+  //itera por cada elemento y con el toggle le agrega o saca el color
+  textNodes.forEach((element) => element.classList.toggle("white-text"));
+  if (container.classList.contains("background-black")) {
+    avatar.style.border = "2px solid blue"
+  } 
+
+};
+
+cambiarTema();
+
+
