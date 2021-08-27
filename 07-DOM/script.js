@@ -31,5 +31,23 @@
 
 //5- QuerySelectorAll -selecciona todos los elementos
 
-const username = document.querySelectorAll(".username");
-console.log(username);
+// const username = document.querySelectorAll(".username");
+// console.log(username);
+
+//Manipulacion de nodos
+const nombre = document.querySelector(".username");
+//console.log(nombre.textContent);
+
+//cambiar el texto
+//nombre.textContent = "Luis";
+nombre.innerText = "Luis";
+
+//Acceder y modificar src imagen
+const avatar = document.querySelector("#avatar");
+avatar.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/1024px-The.Matrix.glmatrix.2.png";
+
+//Introducir html con js dentro del nodo que seleccionemos
+const list = document.querySelector("#repos-list");
+list.innerHTML= `<li>1 Repo</li> <li>2 Repo</li>`
+console.log(list.outerHTML);
+console.log(list.innerHTML);
