@@ -70,28 +70,62 @@ avatar.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matr
 //container.classList.toggle("background-black");
 
 
-const cambiarTema = () => {
-  //selecciona los textos
-  const textNodes = document.querySelectorAll(".text");
-  //selecciona el contenedor
-  const container = document.querySelector(".container");
+// const cambiarTema = () => {
+//   //selecciona los textos
+//   const textNodes = document.querySelectorAll(".text");
+//   //selecciona el contenedor
+//   const container = document.querySelector(".container");
 
-  // //agrega un borde a la imagen
-  // const avatar = document.querySelector("#avatar");
-  // //console.log(avatar.style);
-  // avatar.style.border = "2px solid blue";
-  // //console.log(avatar.style);
+//   // //agrega un borde a la imagen
+//   // const avatar = document.querySelector("#avatar");
+//   // //console.log(avatar.style);
+//   // avatar.style.border = "2px solid blue";
+//   // //console.log(avatar.style);
 
-  //cambiar el color del contenedor
-  container.classList.toggle("background-black");
-  //itera por cada elemento y con el toggle le agrega o saca el color
-  textNodes.forEach((element) => element.classList.toggle("white-text"));
-  if (container.classList.contains("background-black")) {
-    avatar.style.border = "2px solid blue"
-  } 
+//   //cambiar el color del contenedor
+//   container.classList.toggle("background-black");
+//   //itera por cada elemento y con el toggle le agrega o saca el color
+//   textNodes.forEach((element) => element.classList.toggle("white-text"));
+//   if (container.classList.contains("background-black")) {
+//     avatar.style.border = "2px solid blue"
+//   } 
 
-};
+// };
 
-cambiarTema();
+// cambiarTema();
+
+// //Eliminar un nodo
+// const repos = document.querySelector("#repos");
+// //repos.remove();
+
+// //Crear un nodo
+// const reposNode = document.createElement("h2");
+// reposNode.textContent = "Texto agregado desde js";
+// reposNode.classList.add("white-text", "text");
+
+// //agregar el nodo creado al html
+// const parentAside = document.querySelector("aside");
+// //lo agrega al ultimo
+// parentAside.appendChild(reposNode);
+
+// //before - lo agrega antes del elemento seleccionado
+// //after lo agrega despues
+// const antesDelElemento = document.createElement("h2");
+// antesDelElemento.textContent = "Texto creado desde js antes del elemento de abajo";
+// antesDelElemento.classList.add("white-text", "text");
+// repos.before(antesDelElemento);
+// //repos.after(antesDelElemento);
+
+/* 
+EJERCICIO:
+Utilizando el listado de repositorios que nos da la API de github , tomar el primer repositorio del listado 
+y realizar las siguientes tareas:
+
+1) Modificar el texto nombre por el nombre de usuario de github
+2)agregar el avatar del usuario
+3)insertar un listado de links a sus 5 primeros repositorios
+*/
+
+
 
 
