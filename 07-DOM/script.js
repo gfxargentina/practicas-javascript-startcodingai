@@ -35,16 +35,16 @@
 // console.log(username);
 
 //Manipulacion de nodos
-const nombre = document.querySelector(".username");
-//console.log(nombre.textContent);
+// const nombre = document.querySelector(".username");
+// //console.log(nombre.textContent);
 
-//cambiar el texto
-//nombre.textContent = "Luis";
-nombre.innerText = "Luis";
+// //cambiar el texto
+// //nombre.textContent = "Luis";
+// nombre.innerText = "Luis";
 
-//Acceder y modificar src imagen
-const avatar = document.querySelector("#avatar");
-avatar.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/1024px-The.Matrix.glmatrix.2.png";
+// //Acceder y modificar src imagen
+// const avatar = document.querySelector("#avatar");
+// avatar.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/The.Matrix.glmatrix.2.png/1024px-The.Matrix.glmatrix.2.png";
 
 //Introducir html con js dentro del nodo que seleccionemos
 // const list = document.querySelector("#repos-list");
@@ -125,6 +125,63 @@ y realizar las siguientes tareas:
 2)agregar el avatar del usuario
 3)insertar un listado de links a sus 5 primeros repositorios
 */
+const baseUrl = "https://api.github.com";
+
+const getPublicRepositories = async () => {
+    const response = await fetch(`${baseUrl}/repositories`);
+    const jsonResponse = await response.json();
+    //console.log(jsonResponse[0]);
+    return jsonResponse[0];
+}
+
+const getRepositoriesFromOwner = async (reposEndpoint) => {
+  
+    //fetch al endpoint para traer los repositorios del owner seleccionado
+    const reposResponse = await fetch(reposEndpoint);
+    //parseo de la data para poder leerla
+    const jsonReposResponse = await reposResponse.json();
+    //con el slice devuelve los primeros 5 repositorios
+    const responseRepos = jsonReposResponse.slice(0, 5);
+
+    //console.log(jsonReposResponse);
+    //console.log(responseRepos);
+    return responseRepos;
+}
+
+const editProfile = async() => {
+    const profileData = await getPublicRepositories();
+    //console.log(profileData);
+    const avatarUrl = profileData.owner.avatar_url;
+    const name = profileData.owner.login;
+    //console.log(avatarUrl, name);
+    const userRepos = await getRepositoriesFromOwner(profileData.owner.repos_url);
+    console.log(userRepos);
+
+    //selecciona el nodo con el id avatar
+    const userAvatar = document.querySelector("#avatar");
+    //cambia el source de la imagen por la imagen de github
+    userAvatar.src = avatarUrl;
+
+    //selecciona el nodo del html h1 del nombre
+    const nameNode = document.querySelector("h1");
+    //cambia el nombre por el nombre traido de github
+    nameNode.textContent = name;
+
+    userRepos.forEach((repo) => {
+        //crea un elemento con un tah html a-anchor link
+        const repoNode = document.createElement("a");
+        //selecciona el padre donde lo queremos agregar
+        const listNode = document.querySelector("#repos-list");
+        //la informacion que agregaremos
+        repoNode.textContent = repo.html_url;
+        repoNode.href = repo.html_url;
+
+        //lo agrega al html
+        listNode.appendChild(repoNode);
+        
+    })
+}
+editProfile();
 
 
 
