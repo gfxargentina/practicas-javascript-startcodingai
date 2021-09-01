@@ -131,6 +131,8 @@ const getPublicRepositories = async () => {
     const response = await fetch(`${baseUrl}/repositories`);
     const jsonResponse = await response.json();
     //console.log(jsonResponse[0]);
+
+    //retorna el primer resultado del array
     return jsonResponse[0];
 }
 
@@ -150,12 +152,15 @@ const getRepositoriesFromOwner = async (reposEndpoint) => {
 
 const editProfile = async() => {
     const profileData = await getPublicRepositories();
-    //console.log(profileData);
+    
+    //trae la url del avatar de github
     const avatarUrl = profileData.owner.avatar_url;
+    //trae el nombre del usuario de github
     const name = profileData.owner.login;
-    //console.log(avatarUrl, name);
+    
+
     const userRepos = await getRepositoriesFromOwner(profileData.owner.repos_url);
-    console.log(userRepos);
+    //console.log(userRepos);
 
     //selecciona el nodo con el id avatar
     const userAvatar = document.querySelector("#avatar");
@@ -167,8 +172,9 @@ const editProfile = async() => {
     //cambia el nombre por el nombre traido de github
     nameNode.textContent = name;
 
+    //itera sobre los repositorios y los agrega al html    
     userRepos.forEach((repo) => {
-        //crea un elemento con un tah html a-anchor link
+        //crea un elemento con un tag html a-anchor link
         const repoNode = document.createElement("a");
         //selecciona el padre donde lo queremos agregar
         const listNode = document.querySelector("#repos-list");
