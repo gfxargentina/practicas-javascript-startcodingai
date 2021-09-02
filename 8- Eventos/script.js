@@ -47,15 +47,24 @@ const paintSquare = (event) => {
   // console.log(event.target.id);
   // console.log(selectedColor);
 
-  //
+  //si no hay un color seleccionado con el return mata la funcion y no hace nada
+  //seletedColor arranca siendo undefined, y undefined es un valor falsy, 
+  //con la negacion ! lo convierte a true
   if (!selectedColor) return;
 
-  //selecciona el elemento del evento que viene de linea 67
+  //selecciona el elemento del evento que viene de linea 68
   const selectedSquare = document.querySelector(`#${event.target.id}`);
   //className pisa cualquier clase que ya este en el elemento
   //agrega painterBlock que ya tenia para no perderla  y le agrega otra selectedColor que viene de linea 37
                               //con template literals interpolamos la variable selectedColor
   selectedSquare.className = `painterBlock ${selectedColor}`;
+}
+
+//pinta cuadrados con el movimiento del mouse
+const paintSquareOnMove = (event) => {
+  //si event.buttons es distinto a 1, no hace nada, con el return termina la funcion
+  if(event.buttons !== 1) return;
+  paintSquare(event);
 }
 
 //selecciona todos los elementos con la clase color
@@ -70,3 +79,5 @@ const gridSquares = document.querySelectorAll(".painterBlock");
 //itera sobre cada cuadro y le agrega un addEventListener que escuche el click,
 //y si hay un click dispara la funcion paintSquare linea 46
 gridSquares.forEach((square) => square.addEventListener("click", paintSquare) );
+
+gridSquares.forEach((square) => square.addEventListener("mousemove", paintSquareOnMove));
