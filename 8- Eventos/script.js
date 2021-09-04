@@ -67,6 +67,18 @@ const paintSquareOnMove = (event) => {
   paintSquare(event);
 }
 
+//resetear el grid
+const resetGrid = () => {
+  gridSquares.forEach((square) => {
+    square.className = "painterBlock";
+  });
+  //para que no se pueda pintar
+  selectedColor = null;
+  //para borrar el texto del color elegido
+  const strongTag = document.querySelector("#selected-color");
+  strongTag.textContent = "";
+}
+
 //selecciona todos los elementos con la clase color
 const colorSquares = document.querySelectorAll(".color");
 
@@ -80,4 +92,10 @@ const gridSquares = document.querySelectorAll(".painterBlock");
 //y si hay un click dispara la funcion paintSquare linea 46
 gridSquares.forEach((square) => square.addEventListener("click", paintSquare) );
 
+//itera sobre cada cuadro y le agrega un addEventListener que escuche el movimiento del mouse,
+//y si hay un click dispara la funcion paintSquareOnMove linea 64
 gridSquares.forEach((square) => square.addEventListener("mousemove", paintSquareOnMove));
+
+//boton reset
+const resetBtn = document.querySelector("#reset-btn");
+resetBtn.addEventListener("click", resetGrid);
